@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Exchange</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="items" class="list-mini-content" padding>
+  <div *ngIf="items.length > 0" class="list-mini">
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        <!-- <ion-thumbnail slot="start">
+          <img [src]="item.payload.doc.data().image">
+        </ion-thumbnail> -->
+        <ion-label>{{item.payload.doc.data().name}}</ion-label>
+        <!-- <ion-button fill="clear" slot="end">Details</ion-button> -->
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="items.length == 0" class="empty-list">
+    No deals available at the moment.
+  </div>
+
+</ion-content>

@@ -54,12 +54,12 @@ export class DetailsPage implements OnInit {
       description: value.description,
       image: this.image
     }
-    this.firebaseService.updateTask(this.item.id,data)
-    .then(
-      res => {
-        this.router.navigate(["/home"]);
-      }
-    )
+    // this.firebaseService.updateTask(this.item.id,data)
+    // .then(
+    //   res => {
+    //     this.router.navigate(["/home"]);
+    //   }
+    // )
   }
 
   async delete() {

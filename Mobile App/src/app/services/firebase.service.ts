@@ -20,7 +20,7 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('tasks').snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('rewards').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -47,27 +47,27 @@ export class FirebaseService {
     this.snapshotChangesSubscription.unsubscribe();
   }
 
-  updateTask(taskKey, value){
-    return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).set(value)
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      )
-    })
-  }
+  // updateTask(taskKey, value){
+  //   return new Promise<any>((resolve, reject) => {
+  //     let currentUser = firebase.auth().currentUser;
+  //     this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).set(value)
+  //     .then(
+  //       res => resolve(res),
+  //       err => reject(err)
+  //     )
+  //   })
+  // }
 
-  deleteTask(taskKey){
-    return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).delete()
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      )
-    })
-  }
+  // deleteTask(taskKey){
+  //   return new Promise<any>((resolve, reject) => {
+  //     let currentUser = firebase.auth().currentUser;
+  //     this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).delete()
+  //     .then(
+  //       res => resolve(res),
+  //       err => reject(err)
+  //     )
+  //   })
+  // }
 
   createTask(value){
     return new Promise<any>((resolve, reject) => {
@@ -84,34 +84,44 @@ export class FirebaseService {
     })
   }
 
-  encodeImageUri(imageUri, callback) {
-    var c = document.createElement('canvas');
-    var ctx = c.getContext("2d");
-    var img = new Image();
-    img.onload = function () {
-      var aux:any = this;
-      c.width = aux.width;
-      c.height = aux.height;
-      ctx.drawImage(img, 0, 0);
-      var dataURL = c.toDataURL("image/jpeg");
-      callback(dataURL);
-    };
-    img.src = imageUri;
-  };
+  getUserInformation() {
 
-  uploadImage(imageURI, randomId){
+  }
+
+  updateScore(value) {
+
     return new Promise<any>((resolve, reject) => {
-      let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('image').child(randomId);
-      this.encodeImageUri(imageURI, function(image64){
-        imageRef.putString(image64, 'data_url')
-        .then(snapshot => {
-          snapshot.ref.getDownloadURL()
-          .then(res => resolve(res))
-        }, err => {
-          reject(err);
-        })
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).set(value)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+
+  }
+
+  getBehaviorHistory() {
+    return new Promise<any>((resolve) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('history').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
       })
     })
   }
+
+  getPartnershipDeals() {
+    // return new Promise<any>((resolve) => {
+    //   this.afAuth.user.subscribe(currentUser => {
+    //     if(currentUser){
+    //       this.snapshotChangesSubscription = this.afs.collection('rewards').snapshotChanges();
+    //       resolve(this.snapshotChangesSubscription);
+    //     }
+    //   })
+    // })
+    return this.afs.collection('rewards').snapshotChanges();
+  }
+
 }
