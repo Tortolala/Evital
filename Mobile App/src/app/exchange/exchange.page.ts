@@ -32,8 +32,4 @@ export class ExchangePage implements OnInit {
     })
   }
 
-  async presentLoading(loading) {
-    return await loading.present();
-  }
-
 }

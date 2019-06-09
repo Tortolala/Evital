@@ -1,0 +1,21 @@
+ion-label {
+  margin-bottom: -10px;
+}
+
+.img {
+  border-radius: 50%;
+}
+
+.item ion-thumbnail {
+  min-width: 5rem;
+  min-height: 5rem;
+  img {
+      max-width: 5rem;
+      min-width: 5rem;
+  }
+}
+
+.mainText {
+  font-weight: bold;
+  font-size: 20px;
+}

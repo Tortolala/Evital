@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-history',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryPage implements OnInit {
 
-  constructor() { }
+  items: Array<any>;
+
+  constructor(
+    private firebaseService: FirebaseService,
+  ) { }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData(){
+    this.firebaseService.getBehaviorHistory()
+    .subscribe(result => {
+      this.items = result;
+    })
   }
 
 }
