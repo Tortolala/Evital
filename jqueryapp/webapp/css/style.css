@@ -26,5 +26,21 @@
   width: 150px;
 } 
 
+.card.container{
+  margin-top: 10%;
+}
+.modal-body  p {
+  text-align: center;
+}
 
 
+body{
+  background: rgba(50,0,189,0.68);
+background: -moz-linear-gradient(left, rgba(50,0,189,0.68) 0%, rgba(45,9,189,0.68) 4%, rgba(0,91,189,0.88) 40%, rgba(0,125,157,1) 61%, rgba(0,184,102,1) 97%, rgba(0,189,97,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(50,0,189,0.68)), color-stop(4%, rgba(45,9,189,0.68)), color-stop(40%, rgba(0,91,189,0.88)), color-stop(61%, rgba(0,125,157,1)), color-stop(97%, rgba(0,184,102,1)), color-stop(100%, rgba(0,189,97,1)));
+background: -webkit-linear-gradient(left, rgba(50,0,189,0.68) 0%, rgba(45,9,189,0.68) 4%, rgba(0,91,189,0.88) 40%, rgba(0,125,157,1) 61%, rgba(0,184,102,1) 97%, rgba(0,189,97,1) 100%);
+background: -o-linear-gradient(left, rgba(50,0,189,0.68) 0%, rgba(45,9,189,0.68) 4%, rgba(0,91,189,0.88) 40%, rgba(0,125,157,1) 61%, rgba(0,184,102,1) 97%, rgba(0,189,97,1) 100%);
+background: -ms-linear-gradient(left, rgba(50,0,189,0.68) 0%, rgba(45,9,189,0.68) 4%, rgba(0,91,189,0.88) 40%, rgba(0,125,157,1) 61%, rgba(0,184,102,1) 97%, rgba(0,189,97,1) 100%);
+background: linear-gradient(to right, rgba(50,0,189,0.68) 0%, rgba(45,9,189,0.68) 4%, rgba(0,91,189,0.88) 40%, rgba(0,125,157,1) 61%, rgba(0,184,102,1) 97%, rgba(0,189,97,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3200bd', endColorstr='#00bd61', GradientType=1 );
+}
