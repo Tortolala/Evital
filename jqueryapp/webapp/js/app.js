@@ -24,9 +24,9 @@ const config = {
   };
   
   questions = {
-    "car driver": [{question: "pregunta1", answer: true, weight: 25, name: "Driving at 70km/h cap"},
-                   {question: "pregunta2",answer: true, weight: 25,name: "Driving less than 1hr/day"},
-                   {question: "pregunta3",answer: true, weight: 25,name: "Not using phone while driving"}]
+    "car driver": [{question: "Your current velocity is 70 km/h, you are roading on civil area, \nWould you like to increase your velocity to 80km/h ?", answer: true, weight: 25, name: "Driving at 70km/h cap"},
+                   {question: "You have already driven 50 minutes do you take public transportation for your last errands?", answer: false, weight: 25,name: "Driving less than 1hr/day"},
+                   {question: "You are roading and you have 3 WhatsApp notification, 4 Instagram notification and 10 Facebook notification. Would you like to check your phone for a while?",answer: false, weight: 25,name: "Not using phone while driving"}]
   }
   firebase.initializeApp(config);
   var db = firebase.firestore();
