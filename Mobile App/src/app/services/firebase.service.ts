@@ -85,42 +85,21 @@ export class FirebaseService {
   }
 
   getUserInformation() {
-
+    // let currentUser = firebase.auth().currentUser;
+    // return this.afs.collection("people").doc("hMHxSx7DzLgqKl6Mft4wNt7JXwG3").snapshotChanges(function(doc) {
+      // console.log("Current data: ", doc.data());
+  // });
   }
 
-  updateScore(value) {
-
-    return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).set(value)
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      )
-    })
-
+  getScore() {
+    return this.afs.collection('people').doc('hMHxSx7DzLgqKl6Mft4wNt7JXwG3').snapshotChanges();
   }
 
   getBehaviorHistory() {
-    return new Promise<any>((resolve) => {
-      this.afAuth.user.subscribe(currentUser => {
-        if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('history').snapshotChanges();
-          resolve(this.snapshotChangesSubscription);
-        }
-      })
-    })
+    return this.afs.collection('people').doc("hMHxSx7DzLgqKl6Mft4wNt7JXwG3").collection('history').snapshotChanges();
   }
 
   getPartnershipDeals() {
-    // return new Promise<any>((resolve) => {
-    //   this.afAuth.user.subscribe(currentUser => {
-    //     if(currentUser){
-    //       this.snapshotChangesSubscription = this.afs.collection('rewards').snapshotChanges();
-    //       resolve(this.snapshotChangesSubscription);
-    //     }
-    //   })
-    // })
     return this.afs.collection('rewards').snapshotChanges();
   }
 

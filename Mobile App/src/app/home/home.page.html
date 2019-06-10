@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar color="primary" mode="ios">
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/new-task']">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title> Evital </ion-title>
@@ -11,92 +11,69 @@
 
 <ion-content padding>
 
-  <ion-card>
-
-    <ion-list lines="inset">
-        <ion-item>
-            <ion-icon expand="block" name="bicycle"></ion-icon>
-        </ion-item>
-
-        <ion-item>
-          <ion-label> 100 points </ion-label>
-        </ion-item>
-      </ion-list>
-
-      <ion-item>
-        <ion-label text-wrap>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-label text-wrap [routerLink]="['/history']">
-           History
-        </ion-label>
-      </ion-item>
-      <br>
-  </ion-card>
-
-  <ion-card>
-
+  <!-- MAIN PANEL -->
+  <ion-card padding>
     <ion-grid>
       <ion-row>
+        <ion-col size="2">
+          <ion-icon expand="block" name="car" size="large"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-label class="userName"> John Doe </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-label text-wrap class="scoreLabel">
+          100 points
+        </ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-label text-wrap class="levelLabel">
+          Level 5
+        </ion-label>
+      </ion-row>
+      <ion-row style="text-align: right">
+        <ion-label text-wrap [routerLink]="['/history']" class="historyLabel">
+          History >
+        </ion-label>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 
+  <!-- TRIP -->
+  <ion-card [routerLink]="['/trip']">
+    <ion-card-header>
+        <ion-card-title> Trip </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="tripText">
+      Start a new car trip. Be conscious about your behavior and earn reward points.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- TIPS/REMINDERS -->
+  <ion-card padding>
+    <ion-grid>
+      <ion-row>
         <ion-col size="2">
             <ion-icon name="bulb" size="large"></ion-icon>
         </ion-col>
         <ion-col size="10">
-          <ion-label text-warp> Remember that lkjklj jlkd djlkj lkj kllkj sd. </ion-label>
+          <ion-label text-warp class="tipText">
+              Did you know? Going from 70km/h to 80kh/m increases the risk of crashing in a 60%.
+          </ion-label>
         </ion-col>
-
       </ion-row>
     </ion-grid>
-
   </ion-card>
 
-  <ion-card [routerLink]="['/trip']">
-
-    <ion-card-header>
-        <ion-card-title> Trip </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      Start a new bike trip and earn points!
-    </ion-card-content>
-
-  </ion-card>
-
-
+  <!-- REWARD CENTER -->
   <ion-card [routerLink]="['/exchange']">
-
     <ion-card-header>
-        <ion-card-title> Redeem </ion-card-title>
+        <ion-card-title> Reward Center </ion-card-title>
     </ion-card-header>
-
-    <ion-card-content>
-      Lorem ipsum
+    <ion-card-content class="rewardText">
+      Have a look at the awesome rewards available in your local area and get inspired to earn points with us.
     </ion-card-content>
-
-
   </ion-card>
-<!--
-    <div class="list-mini">
-      <ion-list>
-        <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
-          <ion-thumbnail slot="start">
-            <img [src]="item.payload.doc.data().image">
-          </ion-thumbnail>
-          <ion-label>{{item.payload.doc.data().name}}</ion-label>
-          <ion-button fill="clear" slot="end">Details</ion-button>
-        </ion-item>
-      </ion-list>
-    </div>
-    <div *ngIf="items.length == 0" class="empty-list">
-      Please create your first task.
-    </div> -->
-
-
-  <ion-button color="light" (click)="logout()"> Log Out</ion-button>
 
 </ion-content>
