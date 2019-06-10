@@ -53,18 +53,17 @@ $(document).ready(function(){
 
   $("#true").on("click",function(e){
     if (GAME.question.answer == true){
-        console.log(GAME.question.score)
-        GAME.user.score = parseInt($("#score").text()) + GAME.question.weight
-        $("#score").text(GAME.user.score)
+      GAME.user.score = parseInt($("#score").text()) + GAME.question.weight
+      $("#score").text(GAME.user.score)
         user = db.collection("people").doc("hMHxSx7DzLgqKl6Mft4wNt7JXwG3")
         user.set(GAME.user) 
         GAME.count -= 1
         user.collection("history").doc(GAME.count + "").set(GAME.question)
       .then(function(docRef) { 
-          console.log("Document written with ID: ", docRef.id);
+        console.log("Document written with ID: ", docRef.id);
       })
       .catch(function(error) {
-          console.error("Error adding document: ", error);
+        console.log("Error adding document: ", error);
       });
     } 
     
@@ -72,8 +71,20 @@ $(document).ready(function(){
 
   $("#false").on("click",function(e){
     if (GAME.question.answer == false){
-
-    }    
+      console.log(GAME.question.score)
+      GAME.user.score = parseInt($("#score").text()) + GAME.question.weight
+      $("#score").text(GAME.user.score)
+      user = db.collection("people").doc("hMHxSx7DzLgqKl6Mft4wNt7JXwG3")
+      user.set(GAME.user) 
+      GAME.count -= 1
+      user.collection("history").doc(GAME.count + "").set(GAME.question)
+    .then(function(docRef) { 
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.log("Error adding document: ", error);
+    });
+  }     
   })
   
 })
